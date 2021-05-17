@@ -1,4 +1,4 @@
-#Jomaway
+# Jomaway
 
 - this is my first Github page
 

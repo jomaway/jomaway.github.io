@@ -1,7 +1,14 @@
-## Welcome to my GitHub Page
+## Welcome 🤗
 
-This is my first contact with GitHub Pages.
-So don't know what to publish here yet, at the moment just for testing ... 
+A small overview about projects and stuff
+
+### Qt lesson Projects
+
+#### Klassen
+
+- [Aufgabe-Werkstatt](https://github.com/jomaway/Aufgabe-Werkstatt)
+- [Aufgabe-Konto](https://github.com/jomaway/Aufgabe-Konto)
+- [Aufgabe-Waren](https://github.com/jomaway/Aufgabe-Waren)
 
 ### Markdown
 
