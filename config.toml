@@ -1,8 +1,12 @@
 # The URL the site will be built for
 base_url = "https://paperbytelogs.de/"
 title = "Paper Byte Logs"
-theme = "apollo"
+description = "A personal blog by jomaway"
 
+generate_sitemap = true
+generate_robots_txt = true
+
+theme = "apollo"
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
 
@@ -16,19 +20,20 @@ taxonomies = [
     { name = "tags" },
 ]
 
+[markdown]
+# Whether to do syntax highlighting
+# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
+highlight_code = true
+highlight_theme = "gruvbox-dark"
+# footnotes at the bottom
+bottom_footnotes = true
+
 [search]
 include_title = true
 include_description = true
 include_path = true
 include_content = true
 index_format = "elasticlunr_json"
-
-
-[markdown]
-# Whether to do syntax highlighting
-# Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
-highlight_code = true
-highlight_theme = "gruvbox-dark"
 
 [extra]
 # Put all your custom variables here
