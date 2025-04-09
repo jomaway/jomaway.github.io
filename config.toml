@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://jomaway.github.io/"
+base_url = "https://paperbytelogs.de/"
 theme = "terminimal"
 
 # Whether to automatically compile all Sass files in the sass directory
