@@ -1,6 +1,7 @@
 # The URL the site will be built for
 base_url = "https://paperbytelogs.de/"
-theme = "terminimal"
+title = "Paper Byte Logs"
+theme = "apollo"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -8,11 +9,20 @@ compile_sass = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
+
 generate_feeds = false
 
 taxonomies = [
     { name = "tags" },
 ]
+
+[search]
+include_title = true
+include_description = true
+include_path = true
+include_content = true
+index_format = "elasticlunr_json"
+
 
 [markdown]
 # Whether to do syntax highlighting
@@ -22,13 +32,24 @@ highlight_theme = "gruvbox-dark"
 
 [extra]
 # Put all your custom variables here
-logo_text = "Paper Byte Logs"
-author = "jomaway"
-accent_color = "blue"
+theme = "toggle"
+comment = false
 
-menu_items = [
-  {name = "blog", url = "$BASE_URL"},
-  {name = "notes",  url = "$BASE_URL/notes"},
-  {name = "courses", url = "$BASE_URL/courses"},
-  {name = "github", url = "https://github.com/jomaway", newtab = true},
+# logo_text = "Paper Byte Logs"
+# author = "jomaway"
+# accent_color = "blue"
+socials = [
+    { name = "github", url = "https://github.com/jomaway/", icon = "github" },
+    { name = "mastodon", url = "https://fosstodon.org/@jomaway", icon = "mastodon" },
 ]
+
+menu = [
+  {name = "posts", url = "/posts", weight = 1},
+  {name = "notes",  url = "/notes"},
+  {name = "projects", url = "/projects"},
+  # {name = "github", url = "https://github.com/jomaway", newtab = true},
+]
+
+
+[extra.analytics]
+enabled = false

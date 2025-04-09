@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block main_content %}
+    {{ post_macros::home_page(section=section) }}
+
+    {% set posts_section = get_section(path="posts/_index.md") %}
+    {% set projects_section = get_section(path="projects/_index.md") %}
+    {% set posts = posts_section.pages | slice(start=0, end=5) %}
+    {% set projects = projects_section.pages | slice(start=0, end=5) %}
+
+    <section class="posts">
+        {{post_macros::page_header(title="posts")}}
+        <main class="list">
+            {{ post_macros::list_posts(pages=posts) }}
+        </main>
+    </section>
+
+    <section class="projects">
+        {{post_macros::page_header(title="projects")}}
+        <main>
+            {{ post_macros::cards_posts(pages=projects) }}
+        </main>
+    </section>
+
+{% endblock main_content %}
