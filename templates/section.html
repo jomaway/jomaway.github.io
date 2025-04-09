@@ -1,0 +1,34 @@
+{% extends "terminimal/templates/index.html" %}
+
+{%- block title -%}
+{{ title_macros::title(page_title=section.title, main_title=config.title) }}
+{%- endblock -%}
+
+{% block content %}
+
+
+<div class="post">
+    {{ post_macros::header(page=section) }}
+    {{ post_macros::content(page=section, summary=false, show_only_description=false) }}
+    {{ post_macros::earlier_later(page=section) }}
+
+        {%- if paginator %}
+            {%- set show_pages = paginator.pages -%}
+        {% else %}
+            {%- set show_pages = section.pages -%}
+        {% endif -%}
+
+        <ul>
+            {%- for page in show_pages %}
+            <li  class="on-list">
+                {% if page.extra.external_link %}
+                    {% set url = page.extra.external_link %}
+                {% else %}
+                    {% set url = page.permalink %}
+                {% endif %}
+                <a href="{{ url  | safe }}">{{ page.title }}</a>
+            </li>
+            {% endfor -%}
+        </ul>
+    </div>
+{% endblock content %}
