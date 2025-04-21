@@ -55,6 +55,7 @@ menu = [
   # {name = "github", url = "https://github.com/jomaway", newtab = true},
 ]
 
+fancy_code = true
 
 [extra.analytics]
 enabled = false
