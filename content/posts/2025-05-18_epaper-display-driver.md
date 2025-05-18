@@ -3,10 +3,10 @@ title = "Writing an E-Paper Display Driver "
 
 [taxonomies]
 tags = [ "esp32", "c++", "embedded"]
+
 +++
 
-
-# Writing an E-Paper Display Driver
+# Situation and Goals
 
 I ordered some epaper display modules from [waveshare](https://www.waveshare.com/4.2inch-e-Paper-Module-B.htm) to let my students tinker with them. It is a three color display with 4.2inch and is based on the [SSD1683](https://www.solomon-systech.com/product/ssd1683/) controller.
 
@@ -25,7 +25,7 @@ While this guide aims to provide a starting point and easy to understand impleme
 
 So let's get started.
 
-## How to structure the code?
+# How to structure the code?
 
 To keep the design simple and modular, I decided to go with the following architecture:
 
@@ -34,7 +34,7 @@ To keep the design simple and modular, I decided to go with the following archit
 - Graphics: simple graphics functions to draw on a buffer.
 - User API: a wrapper to use the driver and graphics functions in a arduino typical way.
 
-### The Hardware Abstraction Layer
+## The Hardware Abstraction Layer
 
 Before we can decide how our HAL should look like, we need to understand how the display will be connected to the microcontroller.
 The display uses SPI to communicate with the microcontroller, but it also has some additional pins to control the display. The following table shows the pinout of the display:
@@ -92,7 +92,7 @@ To awake the panel from deep sleep mode we need to use the hardware reset pin. I
 
 The `busy` pin is used to signal that the panel is still processing and you should not send new commands or data to the display.
 
-### The Driver
+## The Driver
 
 Ok now that we have our `EPD_HAL` as a foundation we can continue with the driver itself.
 
@@ -119,7 +119,7 @@ class EPD_Driver {
 };
 ```
 
-#### Initialization and sleep mode
+### Initialization and sleep mode
 
 Let's first look into the `init` process. The description in the datasheet and the provided examples diverged somewhat, but both give us a good starting point. Basically we need to do the following:
 
@@ -161,7 +161,7 @@ void EPD_Driver::sleep()
 }
 ```
 
-#### Show an Image
+### Show an Image
 
 To show something on the epaper display we need to load the image data into the RAM of the epaper module and then tell it to update the screen. But as the display supports `RED`, `BLACK` and `WHITE` there are two memory locations. One for the `BLACK` and `WHITE` image and the other for the `RED` and `WHITE` image. Depending on your initial settings `WHITE` is representate by a `1` and the others are `0`. Each byte which we will send to the panel represents 8 pixels. You can find a visual representation on the [waveshare wiki page](https://www.waveshare.com/wiki/4.2inch_e-Paper_Module_(B)_Manual#Overview).
 
@@ -241,7 +241,7 @@ void loop(){}
 This works as expected and we should see our image on the screen.
 
 
-###  The Graphics Library
+##  The Graphics Library
 
 We could call it a day and just always convert images and copy them into our program or write a simple server where to fetch new images from.
 But sometimes it is useful to be able to create a new image programmatically.
@@ -258,7 +258,7 @@ auto img = canvas.getImage();
 epd.display(img, BLACK_IMAGE);
 ```
 
-### The User API
+## The User API
 
 To simplify usage and make the library feel more like a typical Arduino library, I designed a streamlined Epaper class. It abstracts away lower-level tasks like creating the HAL and driver instances, as well as automatically handling actions like calling sleep after displaying an image. This allows users to get started quickly with minimal setup.
 
@@ -281,7 +281,7 @@ public:
 };
 ```
 
-## Conclusion
+# Conclusion
 
 Before starting this little project i thought it would be much harder and more work to get some minimal example up and running.
 But i made quick progress and the datasheet and the existing examples provided enough information to hack a first working solution together in a couple of hours.
