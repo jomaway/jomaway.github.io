@@ -1,8 +1,6 @@
 +++
 title = "Writing an E-Paper Display Driver "
 
-draft = true
-
 [taxonomies]
 tags = [ "esp32", "c++", "embedded"]
 +++
