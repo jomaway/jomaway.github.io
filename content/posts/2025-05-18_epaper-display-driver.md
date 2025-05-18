@@ -2,7 +2,7 @@
 title = "Writing an E-Paper Display Driver "
 
 [taxonomies]
-tags = [ "esp32", "c++", "embedded"]
+tags = ["epaper", "esp32", "c++", "embedded"]
 
 +++
 
