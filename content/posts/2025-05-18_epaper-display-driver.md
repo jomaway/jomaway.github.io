@@ -140,9 +140,9 @@ The [Datasheet](https://files.waveshare.com/wiki/4.2inch%20e-Paper%20Module%20(B
 namespace DisplayCmd {
     // System Control
     ...
-    constexpr uint8_t DEEP_SLEEP_MODE               = 0x10; // Deep Sleep Mode Control
-    constexpr uint8_t DATA_ENTRY_MODE               = 0x11; // Data Entry Mode Setting
-    constexpr uint8_t SOFTWARE_RESET                = 0x12; // SW RESET
+    constexpr uint8_t DEEP_SLEEP_MODE   = 0x10; // Deep Sleep Mode Control
+    constexpr uint8_t DATA_ENTRY_MODE   = 0x11; // Data Entry Mode Setting
+    constexpr uint8_t SOFTWARE_RESET    = 0x12; // SW RESET
     ...
 }
 ```
@@ -174,7 +174,7 @@ void EPD_Driver::write_framebuffer(const uint8_t *data, bool use_red_ram);
     hal->send_command(use_red_ram ? DisplayCmd::WRITE_RAM_RED: DisplayCmd::WRITE_RAM_BW);
 
     // Send all pixels
-    uint32_t w = this->width / 8);
+    uint32_t w = this->width / 8;
     for (uint32_t j = 0; j < this->height; j++)
     {
         for (uint32_t i = 0; i < w; i++)
