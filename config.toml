@@ -14,7 +14,7 @@ compile_sass = true
 build_search_index = true
 
 
-generate_feeds = false
+generate_feeds = true
 
 taxonomies = [
     { name = "tags" },
@@ -24,9 +24,14 @@ taxonomies = [
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Zola
 highlight_code = true
-highlight_theme = "gruvbox-dark"
+highlight_theme = "css"
 # footnotes at the bottom
 bottom_footnotes = true
+
+highlight_themes_css = [
+  { theme = "gruvbox-dark", filename = "syntax-theme-dark.css" },
+  { theme = "gruvbox-light", filename = "syntax-theme-light.css" },
+]
 
 [search]
 include_title = true
@@ -39,10 +44,8 @@ index_format = "elasticlunr_json"
 # Put all your custom variables here
 theme = "toggle"
 comment = false
+toc = true
 
-# logo_text = "Paper Byte Logs"
-# author = "jomaway"
-# accent_color = "blue"
 socials = [
     { name = "github", url = "https://github.com/jomaway/", icon = "github" },
     { name = "mastodon", url = "https://fosstodon.org/@jomaway", icon = "mastodon" },
@@ -55,7 +58,12 @@ menu = [
   # {name = "github", url = "https://github.com/jomaway", newtab = true},
 ]
 
+stylesheets = [
+    "syntax-theme.css"
+]
+
 fancy_code = true
+dynamic_note = true
 
 [extra.analytics]
 enabled = false
